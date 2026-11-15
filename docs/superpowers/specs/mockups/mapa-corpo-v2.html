@@ -1,0 +1,133 @@
+<style>
+  .phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:20px}
+  .phone{width:290px;height:600px;margin:0 auto 14px;border-radius:40px;background:#0b0f0e;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.3)}
+  .scr{position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;font-family:system-ui,-apple-system,sans-serif;display:flex;flex-direction:column;font-size:12px}
+  /* tema claro */
+  .light{background:linear-gradient(180deg,#eef6f2 0%,#f8faf9 55%);color:#10201a}
+  .light .pill{background:#fff;color:#10201a;border:1px solid #dfe7e3}
+  .light .pill.on{background:#10201a;color:#fff;border-color:#10201a}
+  .light .sheet{background:#fff;box-shadow:0 -8px 24px rgba(16,32,26,.08)}
+  .light .muted{color:#6b7c75}
+  .light .bodyfill{fill:url(#gLight)}
+  .light .acc{color:#0a8a5f}.light .accbg{background:#0a8a5f}
+  .light .lvl{background:#e9f5ef;color:#0a8a5f}
+  .light .lvl.m{background:#fff4e0;color:#b26b00}.light .lvl.b{background:#f1f3f2;color:#6b7c75}
+  .light .test{background:#10201a;color:#fff}
+  /* tema escuro */
+  .dark{background:radial-gradient(120% 70% at 50% 25%,#173a30 0%,#0d1714 60%);color:#e8f2ee}
+  .dark .pill{background:rgba(255,255,255,.06);color:#cfe0d9;border:1px solid rgba(255,255,255,.1)}
+  .dark .pill.on{background:#3ee6a8;color:#06231a;border-color:#3ee6a8}
+  .dark .sheet{background:rgba(22,34,30,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.08)}
+  .dark .muted{color:#8fa59c}
+  .dark .bodyfill{fill:url(#gDark)}
+  .dark .acc{color:#3ee6a8}.dark .accbg{background:#3ee6a8}
+  .dark .lvl{background:rgba(62,230,168,.15);color:#3ee6a8}
+  .dark .lvl.m{background:rgba(255,184,77,.15);color:#ffb84d}.dark .lvl.b{background:rgba(255,255,255,.07);color:#8fa59c}
+  .dark .test{background:linear-gradient(135deg,#3ee6a8,#1fb6d4);color:#06231a}
+
+  .hdr{padding:16px 16px 6px;display:flex;justify-content:space-between;align-items:center}
+  .hdr b{font-size:15px;letter-spacing:-.2px}
+  .av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px}
+  .row{display:flex;gap:6px;padding:4px 16px;flex-wrap:wrap}
+  .pill{padding:6px 11px;border-radius:99px;font-weight:600;font-size:11px}
+  .stage{position:relative;flex:1;display:flex;justify-content:center;align-items:flex-start;padding-top:4px}
+  .label{position:absolute;font-size:10px;font-weight:700;padding:4px 8px;border-radius:8px;white-space:nowrap}
+  .pulse{animation:pulse 1.8s ease-out infinite;transform-origin:center;transform-box:fill-box}
+  @keyframes pulse{0%{opacity:.7;transform:scale(.6)}100%{opacity:0;transform:scale(2.2)}}
+  .sheet{position:absolute;left:0;right:0;bottom:0;border-radius:24px 24px 0 0;padding:10px 14px 16px}
+  .grab{width:36px;height:4px;border-radius:4px;background:currentColor;opacity:.2;margin:0 auto 8px}
+  .h{display:flex;justify-content:space-between;align-items:center;padding:6px 0}
+  .h + .h{border-top:1px solid rgba(128,128,128,.15)}
+  .lvl{font-size:10px;font-weight:700;padding:3px 8px;border-radius:99px}
+  .test{margin-top:10px;border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:10px}
+  .play{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+  .q{margin:10px 0 0;font-weight:600;font-size:12.5px;line-height:1.35}
+  .ans{display:flex;gap:6px;margin-top:8px}
+  .ans span{flex:1;text-align:center;padding:8px 0;border-radius:10px;font-weight:700;font-size:11px}
+</style>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="gLight" x1="0" x2="1"><stop offset="0" stop-color="#cfdcd6"/><stop offset=".5" stop-color="#e4ece8"/><stop offset="1" stop-color="#cfdcd6"/></linearGradient>
+    <linearGradient id="gDark" x1="0" x2="1"><stop offset="0" stop-color="#2a4a40"/><stop offset=".5" stop-color="#3d6458"/><stop offset="1" stop-color="#2a4a40"/></linearGradient>
+    <g id="halfBody">
+      <path d="M60,38 L55,38 L54.5,46 C47,48.5 39,49.5 32,53 C25.5,56.5 22.5,63 21.5,73 L19,99 C17.5,112 15.5,124 13.5,137 L11.5,151 C10.5,157 12.5,162.5 16,159.5 L19,150 C21.5,138 24,124 26.5,111 L29.5,92 L31,105 C31.5,116 31.5,126 33.5,136 C35,146 36,153 37,161 L39,200 C40,220 40.5,236 41.5,250 L40.5,263 C40,266 49,266 50,263 L51,250 C52.5,232 54.5,212 56,182 L60,168 Z"/>
+    </g>
+    <g id="human">
+      <ellipse cx="60" cy="21" rx="12.5" ry="15.5"/>
+      <use href="#halfBody"/>
+      <use href="#halfBody" transform="translate(120,0) scale(-1,1)"/>
+    </g>
+  </defs>
+</svg>
+
+<h2>Direção B, versão 2: corpo humano + dois estilos visuais</h2>
+<p class="subtitle">Mesma tela em dois estilos. O corpo agora tem uma silhueta humana, alterna entre <b>frente e costas</b> e tem atalhos de região (anterior, lateral, posterior). As hipóteses ficam numa gaveta que sobe de baixo. Troquei as porcentagens por <b>Alta / Média / Baixa</b>, que soa menos "diagnóstico fechado". Clique no estilo preferido.</p>
+
+<div class="cards phones">
+
+  <!-- CLARO -->
+  <div class="card" data-choice="b2-claro" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="phone"><div class="scr light">
+        <div class="hdr"><div><span class="muted" style="font-size:10px">Caso #12 · Estágio HC</span><br><b>Onde dói?</b></div><div class="av accbg" style="color:#fff">AN</div></div>
+        <div class="row"><span class="pill on">Frente</span><span class="pill">Costas</span><span style="flex:1"></span><span class="pill">↺ 3D</span></div>
+        <div class="stage">
+          <svg width="150" height="290" viewBox="0 0 120 270" class="bodyfill">
+            <use href="#human"/>
+            <circle cx="33" cy="58" r="6" fill="#0a8a5f" class="pulse"/>
+            <circle cx="33" cy="58" r="4.5" fill="#0a8a5f" stroke="#fff" stroke-width="1.5"/>
+          </svg>
+          <span class="label" style="left:22px;top:48px;background:#10201a;color:#fff">Ombro D · anterior</span>
+        </div>
+        <div class="sheet">
+          <div class="grab"></div>
+          <div class="h"><b style="font-size:12px">Hipóteses</b><span class="muted" style="font-size:10px">atualiza a cada resposta</span></div>
+          <div class="h"><span>Tendinopatia do bíceps (cabeça longa)</span><span class="lvl">Alta</span></div>
+          <div class="h"><span>Síndrome do impacto</span><span class="lvl m">Média</span></div>
+          <div class="h"><span>Lesão SLAP</span><span class="lvl b">Baixa</span></div>
+          <div class="test"><div class="play">▶</div><div><b>Próximo: Teste de Speed</b><br><span style="opacity:.75;font-size:10.5px">vídeo de 20s · como fazer e interpretar</span></div></div>
+        </div>
+      </div></div>
+    </div>
+    <div class="card-body">
+      <h3>Clínico claro</h3>
+      <p>Limpo, cara de app de saúde moderno. Fica bem legível no sol e no corredor do hospital.</p>
+    </div>
+  </div>
+
+  <!-- ESCURO -->
+  <div class="card" data-choice="b2-escuro" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="phone"><div class="scr dark">
+        <div class="hdr"><div><span class="muted" style="font-size:10px">Caso #12 · Estágio HC</span><br><b>Onde dói?</b></div><div class="av accbg" style="color:#06231a">AN</div></div>
+        <div class="row"><span class="pill on">Frente</span><span class="pill">Costas</span><span style="flex:1"></span><span class="pill">↺ 3D</span></div>
+        <div class="stage">
+          <svg width="150" height="290" viewBox="0 0 120 270" class="bodyfill" style="filter:drop-shadow(0 0 18px rgba(62,230,168,.18))">
+            <use href="#human"/>
+            <circle cx="33" cy="58" r="6" fill="#3ee6a8" class="pulse"/>
+            <circle cx="33" cy="58" r="4.5" fill="#3ee6a8" stroke="#06231a" stroke-width="1.5"/>
+          </svg>
+          <span class="label" style="left:22px;top:48px;background:#3ee6a8;color:#06231a">Ombro D · anterior</span>
+        </div>
+        <div class="sheet">
+          <div class="grab"></div>
+          <div class="h"><b style="font-size:12px">Hipóteses</b><span class="muted" style="font-size:10px">atualiza a cada resposta</span></div>
+          <div class="h"><span>Tendinopatia do bíceps (cabeça longa)</span><span class="lvl">Alta</span></div>
+          <div class="h"><span>Síndrome do impacto</span><span class="lvl m">Média</span></div>
+          <div class="h"><span>Lesão SLAP</span><span class="lvl b">Baixa</span></div>
+          <div class="test"><div class="play">▶</div><div><b>Próximo: Teste de Speed</b><br><span style="opacity:.75;font-size:10.5px">vídeo de 20s · como fazer e interpretar</span></div></div>
+        </div>
+      </div></div>
+    </div>
+    <div class="card-body">
+      <h3>Escuro premium</h3>
+      <p>Mais "tech" e marcante, com o corpo em destaque com brilho. Cansa menos à noite, estudando em casa ou no ônibus.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top:10px">
+  <p class="subtitle">"↺ 3D" seria um modelo 3D que gira com o dedo. É possível, mas dá bem mais trabalho. Uma ideia é começar com a silhueta 2D (frente e costas) e deixar o 3D para depois.</p>
+</div>

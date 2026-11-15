@@ -1,0 +1,112 @@
+<style>
+  .phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:20px}
+  .phone{width:290px;height:600px;margin:0 auto 14px;border-radius:40px;background:#0b0f0e;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.3)}
+  .scr{position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;font-family:system-ui,-apple-system,sans-serif;display:flex;flex-direction:column;font-size:12px}
+  .light{background:linear-gradient(180deg,#e6f4ee 0%,#f8faf9 45%);color:#10201a}
+  .dark{background:radial-gradient(120% 60% at 50% 0%,#17463a 0%,#0d1714 60%);color:#e8f2ee}
+  .wrap{padding:18px 16px 0;flex:1;display:flex;flex-direction:column;gap:12px}
+  .logo{display:flex;align-items:center;gap:8px}
+  .mark{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+  .light .mark{background:#0a8a5f}.dark .mark{background:linear-gradient(135deg,#3ee6a8,#1fb6d4)}
+  .word{font-size:19px;letter-spacing:-.4px}.word span{font-weight:300}.word b{font-weight:800}
+  .light .word b{color:#0a8a5f}.dark .word b{color:#3ee6a8}
+  .hi{font-size:17px;font-weight:700;line-height:1.25;letter-spacing:-.3px}
+  .muted{opacity:.62}
+  .search{border-radius:16px;padding:12px;display:flex;align-items:center;gap:8px}
+  .light .search{background:#fff;box-shadow:0 6px 18px rgba(16,32,26,.08);border:1px solid #e1e9e5}
+  .dark .search{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)}
+  .search .ph{flex:1;font-size:11.5px;opacity:.6;line-height:1.3}
+  .ic{width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .light .ic{background:#eef5f1}.dark .ic{background:rgba(255,255,255,.08)}
+  .hero{border-radius:20px;padding:14px;display:flex;align-items:center;gap:10px;position:relative;overflow:hidden}
+  .light .hero{background:#10201a;color:#fff}
+  .dark .hero{background:linear-gradient(135deg,#3ee6a8,#1fb6d4);color:#06231a}
+  .hero h4{margin:0 0 4px;font-size:15px}
+  .hero p{margin:0;font-size:10.5px;opacity:.8;line-height:1.35}
+  .go{margin-top:8px;display:inline-block;font-weight:700;font-size:11px;padding:6px 10px;border-radius:99px}
+  .light .go{background:#3ee6a8;color:#06231a}.dark .go{background:#06231a;color:#3ee6a8}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .tile{border-radius:16px;padding:11px}
+  .light .tile{background:#fff;border:1px solid #e1e9e5}
+  .dark .tile{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+  .tile .e{font-size:18px}.tile b{display:block;margin-top:4px;font-size:12px}.tile small{opacity:.6;font-size:10px}
+  .sug{font-size:9px;font-weight:700;padding:1px 5px;border-radius:5px;margin-left:4px;vertical-align:middle}
+  .light .sug{background:#fff4e0;color:#b26b00}.dark .sug{background:rgba(255,184,77,.18);color:#ffb84d}
+  .nav{display:flex;justify-content:space-around;padding:10px 0 16px;font-size:10px;font-weight:600}
+  .light .nav{background:#fff;border-top:1px solid #e1e9e5}
+  .dark .nav{background:rgba(0,0,0,.25);border-top:1px solid rgba(255,255,255,.08)}
+  .nav span{text-align:center;opacity:.55}.nav span.on{opacity:1}
+  .names{margin-top:28px}
+</style>
+
+<h2>Página inicial do MeuFisio</h2>
+<p class="subtitle">A mesma tela nos dois estilos, para ajudar a decidir o tema. Uma única barra de busca aceita <b>texto</b> ("dor no ombro ao levantar o braço") e <b>voz</b> 🎙️, e tem um atalho para o <b>mapa do corpo</b> 🧍. Os itens marcados como <i>sugestão</i> são ideias minhas, não pedidos seus.</p>
+
+<div class="cards phones">
+  <!-- CLARO -->
+  <div class="card" data-choice="home-claro" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="phone"><div class="scr light">
+        <div class="wrap">
+          <div class="logo">
+            <div class="mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="4.5" r="2.2" fill="#fff" stroke="none"/><path d="M4 9.5c3 1.5 5 1.8 8 1.8s5-.3 8-1.8"/><path d="M12 11.3v4.2l-3.5 6"/><path d="M12 15.5l3.5 6"/></svg></div>
+            <div class="word"><span>Meu</span><b>Fisio</b></div>
+          </div>
+          <div class="hi">Olá, Ana 👋<br><span class="muted" style="font-weight:500;font-size:13px">Qual é o caso de hoje?</span></div>
+          <div class="search"><div class="ph">Descreva a queixa do paciente…<br><i>ex.: dor no ombro ao levantar o braço</i></div><div class="ic">🎙️</div><div class="ic">🧍</div></div>
+          <div class="hero">
+            <div style="flex:1"><h4>Investigar caso</h4><p>Responda perguntas guiadas e chegue às hipóteses, aos testes e à conduta.</p><span class="go">Começar →</span></div>
+            <svg width="54" height="96" viewBox="0 0 120 270" fill="rgba(255,255,255,.25)"><ellipse cx="60" cy="21" rx="12.5" ry="15.5"/><rect x="34" y="40" width="52" height="125" rx="20"/><rect x="40" y="160" width="14" height="100" rx="7"/><rect x="66" y="160" width="14" height="100" rx="7"/><circle cx="36" cy="56" r="9" fill="#3ee6a8"/></svg>
+          </div>
+          <div class="grid">
+            <div class="tile"><span class="e">📖</span><b>Glossário</b><small>termos e siglas</small></div>
+            <div class="tile"><span class="e">🧪</span><b>Testes clínicos<span class="sug">sugestão</span></b><small>com vídeo</small></div>
+            <div class="tile"><span class="e">🏋️</span><b>Exercícios<span class="sug">sugestão</span></b><small>por região</small></div>
+            <div class="tile"><span class="e">🗂️</span><b>Meus casos<span class="sug">sugestão</span></b><small>histórico</small></div>
+          </div>
+        </div>
+        <div class="nav"><span class="on">🏠<br>Início</span><span>🔍<br>Buscar</span><span>🗂️<br>Casos</span><span>👤<br>Perfil</span></div>
+      </div></div>
+    </div>
+    <div class="card-body"><h3>Clínico claro</h3></div>
+  </div>
+
+  <!-- ESCURO -->
+  <div class="card" data-choice="home-escuro" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="phone"><div class="scr dark">
+        <div class="wrap">
+          <div class="logo">
+            <div class="mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06231a" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="4.5" r="2.2" fill="#06231a" stroke="none"/><path d="M4 9.5c3 1.5 5 1.8 8 1.8s5-.3 8-1.8"/><path d="M12 11.3v4.2l-3.5 6"/><path d="M12 15.5l3.5 6"/></svg></div>
+            <div class="word"><span>Meu</span><b>Fisio</b></div>
+          </div>
+          <div class="hi">Olá, Ana 👋<br><span class="muted" style="font-weight:500;font-size:13px">Qual é o caso de hoje?</span></div>
+          <div class="search"><div class="ph">Descreva a queixa do paciente…<br><i>ex.: dor no ombro ao levantar o braço</i></div><div class="ic">🎙️</div><div class="ic">🧍</div></div>
+          <div class="hero">
+            <div style="flex:1"><h4>Investigar caso</h4><p>Responda perguntas guiadas e chegue às hipóteses, aos testes e à conduta.</p><span class="go">Começar →</span></div>
+            <svg width="54" height="96" viewBox="0 0 120 270" fill="rgba(6,35,26,.25)"><ellipse cx="60" cy="21" rx="12.5" ry="15.5"/><rect x="34" y="40" width="52" height="125" rx="20"/><rect x="40" y="160" width="14" height="100" rx="7"/><rect x="66" y="160" width="14" height="100" rx="7"/><circle cx="36" cy="56" r="9" fill="#06231a"/></svg>
+          </div>
+          <div class="grid">
+            <div class="tile"><span class="e">📖</span><b>Glossário</b><small>termos e siglas</small></div>
+            <div class="tile"><span class="e">🧪</span><b>Testes clínicos<span class="sug">sugestão</span></b><small>com vídeo</small></div>
+            <div class="tile"><span class="e">🏋️</span><b>Exercícios<span class="sug">sugestão</span></b><small>por região</small></div>
+            <div class="tile"><span class="e">🗂️</span><b>Meus casos<span class="sug">sugestão</span></b><small>histórico</small></div>
+          </div>
+        </div>
+        <div class="nav"><span class="on">🏠<br>Início</span><span>🔍<br>Buscar</span><span>🗂️<br>Casos</span><span>👤<br>Perfil</span></div>
+      </div></div>
+    </div>
+    <div class="card-body"><h3>Escuro premium</h3></div>
+  </div>
+</div>
+
+<div class="names">
+  <h3>Nome do botão principal</h3>
+  <p class="subtitle">Usei "Investigar caso" nos mockups. Clique nos nomes que você gostar:</p>
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="nome-investigar" onclick="toggleSelect(this)"><div class="letter">1</div><div class="content"><h3>Investigar caso</h3><p>Diz exatamente o que acontece: um passo a passo de investigação. É a minha recomendação.</p></div></div>
+    <div class="option" data-choice="nome-raciocinio" onclick="toggleSelect(this)"><div class="letter">2</div><div class="content"><h3>Raciocínio clínico</h3><p>É o termo acadêmico que o estudante reconhece. Soa mais "de aula".</p></div></div>
+    <div class="option" data-choice="nome-novo-caso" onclick="toggleSelect(this)"><div class="letter">3</div><div class="content"><h3>Novo caso</h3><p>Curto e direto. Combina com o "Meus casos" e conversa bem com o futuro prontuário.</p></div></div>
+    <div class="option" data-choice="nome-fisio-guia" onclick="toggleSelect(this)"><div class="letter">4</div><div class="content"><h3>FisioGuia</h3><p>Funciona como nome de produto ou marca, o que ajuda na hora de vender. Mas precisa de uma linha explicando o que é.</p></div></div>
+  </div>
+</div>

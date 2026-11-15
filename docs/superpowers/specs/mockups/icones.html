@@ -1,0 +1,109 @@
+<style>
+  .set{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-top:12px}
+  .it{border-radius:16px;padding:14px 8px;text-align:center;font-family:system-ui,sans-serif;font-size:11.5px;font-weight:600}
+  .it svg{display:block;margin:0 auto 8px}
+  .lightbg{background:#f8faf9;border:1px solid #e1e9e5;color:#10201a}
+  .darkbg{background:#0d1714;border:1px solid #1d2c27;color:#e8f2ee}
+  .twin{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:700px){.twin{grid-template-columns:1fr}}
+  .pad{padding:12px;border-radius:18px}
+  /* Estilo A — linha */
+  .A svg{width:34px;height:34px;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .lightbg.A svg{stroke:#0a8a5f}.darkbg.A svg{stroke:#3ee6a8}
+  /* Estilo B — duotone em bloco */
+  .B .bx{width:46px;height:46px;border-radius:14px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center}
+  .B svg{width:26px;height:26px;margin:0;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .lightbg.B .bx{background:#dff3ea}.lightbg.B svg{stroke:#0a8a5f}.lightbg.B svg .f{fill:#9fe0c4;stroke:none}
+  .darkbg.B .bx{background:rgba(62,230,168,.14)}.darkbg.B svg{stroke:#3ee6a8}.darkbg.B svg .f{fill:rgba(62,230,168,.35);stroke:none}
+  /* Estilo C — gradiente sólido */
+  .C .bx{width:46px;height:46px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#3ee6a8,#1fb6d4);box-shadow:0 6px 14px rgba(31,182,212,.3)}
+  .C svg{width:24px;height:24px;margin:0;fill:none;stroke:#06231a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .C svg .f{fill:rgba(6,35,26,.2);stroke:none}
+</style>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <!-- Investigar caso: silhueta + lupa -->
+  <symbol id="i-investigar" viewBox="0 0 24 24"><circle cx="8" cy="4" r="2"/><path d="M4 9.5c1.6.8 2.7 1 4 1s2.4-.2 4-1"/><path d="M8 10.5V15l-2 5"/><path d="M8 15l2 5"/><circle class="f" cx="16.5" cy="15" r="3.5"/><circle cx="16.5" cy="15" r="3.5"/><path d="M19 17.5l2.5 2.5"/></symbol>
+  <!-- Glossário: livro aberto com Aa -->
+  <symbol id="i-glossario" viewBox="0 0 24 24"><path class="f" d="M3 5.5c3-1 6-1 9 1v13c-3-2-6-2-9-1z"/><path d="M3 5.5c3-1 6-1 9 1v13c-3-2-6-2-9-1z"/><path d="M21 5.5c-3-1-6-1-9 1v13c3-2 6-2 9-1z"/><path d="M15 13l1.5-4 1.5 4M15.5 11.8h2"/></symbol>
+  <!-- Testes clínicos: mão + articulação (ombro) com marcação -->
+  <symbol id="i-testes" viewBox="0 0 24 24"><path d="M5 20v-6.5a2 2 0 0 1 4 0V12a2 2 0 0 1 4 0v1a2 2 0 0 1 4 0v3a4 4 0 0 1-4 4z"/><circle class="f" cx="17" cy="6" r="3"/><circle cx="17" cy="6" r="3"/><path d="M17 4.5V6l1 1"/></symbol>
+  <!-- Exercícios: pessoa com faixa elástica -->
+  <symbol id="i-exercicios" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M12 7v7M12 14l-3 6M12 14l3 6"/><path d="M6 9l6 1 6-1"/><path class="f" d="M4 8.5c0 3 2 5 2 8M20 8.5c0 3-2 5-2 8" stroke-dasharray="1.5 1.8"/><path d="M4 8.5c0 3 2 5 2 8M20 8.5c0 3-2 5-2 8" stroke-dasharray="1.5 1.8"/></symbol>
+  <!-- Meus casos: prancheta -->
+  <symbol id="i-casos" viewBox="0 0 24 24"><rect class="f" x="5" y="4" width="14" height="17" rx="2.5"/><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V3h6v1"/><path d="M8.5 10h7M8.5 13.5h7M8.5 17h4"/></symbol>
+  <!-- Nav / ações -->
+  <symbol id="i-inicio" viewBox="0 0 24 24"><path class="f" d="M4 11l8-7 8 7v9H4z"/><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-buscar" viewBox="0 0 24 24"><circle class="f" cx="11" cy="11" r="6.5"/><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="i-perfil" viewBox="0 0 24 24"><circle class="f" cx="12" cy="8" r="4"/><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.5-4 4.3-5.5 7.5-5.5s6 1.5 7.5 5.5"/></symbol>
+  <symbol id="i-voz" viewBox="0 0 24 24"><rect class="f" x="9" y="3" width="6" height="11" rx="3"/><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></symbol>
+  <symbol id="i-corpo" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2.2"/><path class="f" d="M8 7.5h8l-1 7H9z"/><path d="M8 7.5h8M8 7.5L6 14M16 7.5l2 6.5M9.5 7.5L9 14.5l-1 6M14.5 7.5l.5 7 1 6"/><circle cx="9" cy="9" r="1.2" fill="currentColor"/></symbol>
+</defs></svg>
+
+<h2>Ícones próprios do MeuFisio</h2>
+<p class="subtitle">Troquei os emojis por um conjunto de ícones desenhado para o app. São os mesmos 10 ícones em três estilos, cada um no fundo claro e no escuro. Clique no estilo que preferir.</p>
+
+<div class="options">
+  <!-- A -->
+  <div class="option" data-choice="icones-a-linha" onclick="toggleSelect(this)" style="display:block">
+    <div style="display:flex;gap:10px;align-items:center"><div class="letter">A</div><div class="content"><h3>Linha fina</h3><p>Elegante e leve, no estilo de apps como Apple Saúde. Combina com uma interface minimalista.</p></div></div>
+    <div class="twin" style="margin-top:10px">
+      <div class="pad lightbg"><div class="set">
+        <div class="it lightbg A"><svg><use href="#i-investigar"/></svg>Investigar caso</div>
+        <div class="it lightbg A"><svg><use href="#i-glossario"/></svg>Glossário</div>
+        <div class="it lightbg A"><svg><use href="#i-testes"/></svg>Testes clínicos</div>
+        <div class="it lightbg A"><svg><use href="#i-exercicios"/></svg>Exercícios</div>
+        <div class="it lightbg A"><svg><use href="#i-casos"/></svg>Meus casos</div>
+      </div></div>
+      <div class="pad darkbg"><div class="set">
+        <div class="it darkbg A"><svg><use href="#i-inicio"/></svg>Início</div>
+        <div class="it darkbg A"><svg><use href="#i-buscar"/></svg>Buscar</div>
+        <div class="it darkbg A"><svg><use href="#i-perfil"/></svg>Perfil</div>
+        <div class="it darkbg A"><svg><use href="#i-voz"/></svg>Voz</div>
+        <div class="it darkbg A"><svg><use href="#i-corpo"/></svg>Mapa do corpo</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="option" data-choice="icones-b-duotone" onclick="toggleSelect(this)" style="display:block">
+    <div style="display:flex;gap:10px;align-items:center"><div class="letter">B</div><div class="content"><h3>Duotone em bloco</h3><p>Cada ícone fica numa caixinha com dois tons de verde. É mais fácil de reconhecer rápido e de tocar com uma mão. É a minha recomendação para os botões do menu.</p></div></div>
+    <div class="twin" style="margin-top:10px">
+      <div class="pad lightbg"><div class="set">
+        <div class="it lightbg B"><div class="bx"><svg><use href="#i-investigar"/></svg></div>Investigar caso</div>
+        <div class="it lightbg B"><div class="bx"><svg><use href="#i-glossario"/></svg></div>Glossário</div>
+        <div class="it lightbg B"><div class="bx"><svg><use href="#i-testes"/></svg></div>Testes clínicos</div>
+        <div class="it lightbg B"><div class="bx"><svg><use href="#i-exercicios"/></svg></div>Exercícios</div>
+        <div class="it lightbg B"><div class="bx"><svg><use href="#i-casos"/></svg></div>Meus casos</div>
+      </div></div>
+      <div class="pad darkbg"><div class="set">
+        <div class="it darkbg B"><div class="bx"><svg><use href="#i-inicio"/></svg></div>Início</div>
+        <div class="it darkbg B"><div class="bx"><svg><use href="#i-buscar"/></svg></div>Buscar</div>
+        <div class="it darkbg B"><div class="bx"><svg><use href="#i-perfil"/></svg></div>Perfil</div>
+        <div class="it darkbg B"><div class="bx"><svg><use href="#i-voz"/></svg></div>Voz</div>
+        <div class="it darkbg B"><div class="bx"><svg><use href="#i-corpo"/></svg></div>Mapa do corpo</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="option" data-choice="icones-c-gradiente" onclick="toggleSelect(this)" style="display:block">
+    <div style="display:flex;gap:10px;align-items:center"><div class="letter">C</div><div class="content"><h3>Círculo com gradiente</h3><p>Chamativo e com cara de "app jovem". Chama muita atenção, então funciona melhor usado com moderação.</p></div></div>
+    <div class="twin" style="margin-top:10px">
+      <div class="pad lightbg"><div class="set">
+        <div class="it lightbg C"><div class="bx"><svg><use href="#i-investigar"/></svg></div>Investigar caso</div>
+        <div class="it lightbg C"><div class="bx"><svg><use href="#i-glossario"/></svg></div>Glossário</div>
+        <div class="it lightbg C"><div class="bx"><svg><use href="#i-testes"/></svg></div>Testes clínicos</div>
+        <div class="it lightbg C"><div class="bx"><svg><use href="#i-exercicios"/></svg></div>Exercícios</div>
+        <div class="it lightbg C"><div class="bx"><svg><use href="#i-casos"/></svg></div>Meus casos</div>
+      </div></div>
+      <div class="pad darkbg"><div class="set">
+        <div class="it darkbg C"><div class="bx"><svg><use href="#i-inicio"/></svg></div>Início</div>
+        <div class="it darkbg C"><div class="bx"><svg><use href="#i-buscar"/></svg></div>Buscar</div>
+        <div class="it darkbg C"><div class="bx"><svg><use href="#i-perfil"/></svg></div>Perfil</div>
+        <div class="it darkbg C"><div class="bx"><svg><use href="#i-voz"/></svg></div>Voz</div>
+        <div class="it darkbg C"><div class="bx"><svg><use href="#i-corpo"/></svg></div>Mapa do corpo</div>
+      </div></div>
+    </div>
+  </div>
+</div>
